@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "contract1.nef",
+            "type": "neo-contract",
+            "request": "launch",
+            "program": "${workspaceFolder}/contract1/bin/sc/contract1.nef",
+            "invocation": {
+                "operation": "testInvoke",
+                "args": []
+            },
+            "neo-express": "${workspaceFolder}/default.neo-express",
+            "checkpoint": "${workspaceFolder}/ready.neoxp-checkpoint",
+            "stored-contracts": [
+                "${workspaceFolder}/contract2/bin/sc/contract2.nef"
+            ],
+            "signers": [
+                {
+                    "account": "NNVaYFKxp7eacyY2uPLz5oZXwJUN5FhDfd",
+                    "scopes": "Global"
+                }
+            ],
+        }
+    ]
+}

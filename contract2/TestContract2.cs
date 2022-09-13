@@ -1,13 +1,37 @@
 ﻿using System;
 using System.ComponentModel;
 using Neo;
+using Neo.SmartContract;
 using Neo.SmartContract.Framework;
+using Neo.SmartContract.Framework.Attributes;
 using Neo.SmartContract.Framework.Native;
 using Neo.SmartContract.Framework.Services;
 
 namespace contract2;
 public class TestContract2 : SmartContract
 {
+    [InitialValue("NNVaYFKxp7eacyY2uPLz5oZXwJUN5FhDfd", ContractParameterType.Hash160)]
+    static readonly UInt160 Alice = default!;
+
+    [InitialValue("NPybbE7BdYn9RAuRy6K168sxcGeYmjnseq", ContractParameterType.Hash160)]
+    static readonly UInt160 Bob = default!;
+
+    [InitialValue("Nct3yaEtgLfSdzKd7SLwE2q17f6byeeqYo", ContractParameterType.Hash160)]
+    static readonly UInt160 Charlie = default!;
+
+    public static void TestInvoke()
+    {
+        var aliceBalance = NEO.BalanceOf(Alice);
+        var bobBalance = NEO.BalanceOf(Bob);
+        var charlieBalance = NEO.BalanceOf(Charlie);
+
+        var result = NEO.Transfer(Alice, Charlie, 100);
+
+        var aliceBalance2 = NEO.BalanceOf(Alice);
+        var bobBalance2 = NEO.BalanceOf(Bob);
+        var charlieBalance3 = NEO.BalanceOf(Charlie);
+    }
+
     const byte Prefix_ContractOwner = 0xFF;
 
     [DisplayName("_deploy")]
