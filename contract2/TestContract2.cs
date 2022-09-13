@@ -19,17 +19,19 @@ public class TestContract2 : SmartContract
     [InitialValue("Nct3yaEtgLfSdzKd7SLwE2q17f6byeeqYo", ContractParameterType.Hash160)]
     static readonly UInt160 Charlie = default!;
 
-    public static void TestInvoke()
+    static void PrintBalances(string msg)
     {
         var aliceBalance = NEO.BalanceOf(Alice);
         var bobBalance = NEO.BalanceOf(Bob);
         var charlieBalance = NEO.BalanceOf(Charlie);
+        Runtime.Log($"{msg}: A:{aliceBalance} B:{bobBalance} C:{charlieBalance}");
+    }
 
+    public static void TestInvoke()
+    {
+        PrintBalances("Before Transfer");
         var result = NEO.Transfer(Alice, Charlie, 100);
-
-        var aliceBalance2 = NEO.BalanceOf(Alice);
-        var bobBalance2 = NEO.BalanceOf(Bob);
-        var charlieBalance3 = NEO.BalanceOf(Charlie);
+        PrintBalances("After Transfer");
     }
 
     const byte Prefix_ContractOwner = 0xFF;

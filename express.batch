@@ -1,4 +1,5 @@
 contract deploy ./contract1/bin/sc/contract1.nef genesis
 contract deploy ./contract2/bin/sc/contract2.nef genesis
 transfer 100 neo genesis alice
+transfer 100 gas genesis alice
 checkpoint create ./ready -f
